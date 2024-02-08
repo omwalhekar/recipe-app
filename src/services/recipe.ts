@@ -31,7 +31,7 @@ class Recipe {
   async getRecipeById(id: string): Promise<any> {
     try {
       const response = await axios.get(
-        `${this.baseUrl}/recipes/${id}`,
+        `${this.baseUrl}/recipes/${id}/information?includeNutrition=false`,
         this.headerOptions,
       );
       return response.data;
