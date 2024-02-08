@@ -249,8 +249,15 @@
         object-fit: cover;
       }
     }
+    .recipe-title-wrapper {
+      display: flex;
+      align-items: baseline;
+    }
+    .recipe-action {
+      cursor: pointer;
+    }
     .recipe-title {
-      width: 90%;
+      width: 85%;
       font-size: 36px;
       font-weight: 800;
       line-height: 1.2;

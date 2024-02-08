@@ -2,17 +2,22 @@ import React, { Fragment, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import RecipeService from '../services/recipe';
 import RawHTMLComponent from '../components/RawHTML';
-import { isEmpty } from 'lodash';
+import { find, isEmpty } from 'lodash';
 import CornIcon from '../components/icons/CornIcon';
 import MealIcon from '../components/icons/MealIcon';
 import BackIcon from '../components/icons/BackIcon';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
+import FilledHeartIcon from '../components/icons/FilledHeartIcon';
+import HollowHeartIcon from '../components/icons/HollowHeartIcon';
 
 const Recipe = () => {
   const { recipeId, searchQuery } = useParams();
   const [recipeData, setRecipeData] = useState<any>();
   const [loading, setLoading] = useState(false);
+  const [isLiked, setIsLiked] = useState(false);
+  const [likedRecipes, setLikedRecipes] = useState<any>([]);
+
   const navigate = useNavigate();
 
   const determineMealType = (recipeData: any) => {
@@ -40,13 +45,36 @@ const Recipe = () => {
     }
   };
 
+  // Function to add a new liked recipe
+  const handleLike = (recipeData: any) => {
+    const { id, title, image } = recipeData;
+    let newLikedRecipes = [];
+
+    if (isLiked) {
+      setIsLiked(false);
+      newLikedRecipes = likedRecipes.filter((recipe: any) => recipe.id !== id);
+    } else {
+      setIsLiked(true);
+      newLikedRecipes = [...likedRecipes, { id, title, image }];
+    }
+
+    setLikedRecipes(newLikedRecipes);
+    localStorage.setItem('likedRecipes', JSON.stringify(newLikedRecipes));
+  };
+
   useEffect(() => {
     if (recipeId && recipeId !== recipeData?.id) {
       setLoading(true);
+      const likedRecipes: any = JSON.parse(
+        localStorage.getItem('likedRecipes') as any,
+      );
+      setLikedRecipes(likedRecipes);
+
       RecipeService.getRecipeById(recipeId)
         .then((data: any) => {
-          console.log({ data });
           setRecipeData(data);
+          const isCurrentLiked = find(likedRecipes || [], { id: data.id });
+          if (isCurrentLiked) setIsLiked(true);
         })
         .finally(() => {
           setLoading(false);
@@ -82,7 +110,15 @@ const Recipe = () => {
                 <img src={recipeData?.image} alt={recipeData?.sourceURL} />
               </div>
               <div className='right-section'>
-                <div className='recipe-title'>{recipeData?.title}</div>
+                <div className='recipe-title-wrapper'>
+                  <div className='recipe-title'>{recipeData?.title}</div>
+                  <div
+                    className='recipe-action'
+                    onClick={() => handleLike(recipeData)}
+                  >
+                    {isLiked ? <FilledHeartIcon /> : <HollowHeartIcon />}
+                  </div>
+                </div>
                 <div className='recipe-stats'>
                   <div className='stat-item'>{calculateRating(recipeData)}</div>{' '}
                   |
