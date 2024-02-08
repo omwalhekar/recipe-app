@@ -1,12 +1,20 @@
-import React from 'react';
-import './App.css';
+// App.js
 
-function App() {
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from './pages/Home';
+import Recipe from './pages/Recipe';
+import './App.scss';
+
+const App = () => {
   return (
-    <div className='App'>
-      <header className='App-header'></header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/recipe/:recipeId' element={<Recipe />} />
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;
