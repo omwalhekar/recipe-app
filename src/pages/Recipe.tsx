@@ -7,9 +7,10 @@ import CornIcon from '../components/icons/CornIcon';
 import MealIcon from '../components/icons/MealIcon';
 import BackIcon from '../components/icons/BackIcon';
 import Skeleton from 'react-loading-skeleton';
-import 'react-loading-skeleton/dist/skeleton.css';
 import FilledHeartIcon from '../components/icons/FilledHeartIcon';
 import HollowHeartIcon from '../components/icons/HollowHeartIcon';
+import 'react-loading-skeleton/dist/skeleton.css';
+import Navbar from '../components/Navbar';
 
 const Recipe = () => {
   const { recipeId, searchQuery } = useParams();
@@ -84,7 +85,8 @@ const Recipe = () => {
 
   return (
     <div className='recipe-detail-page'>
-      <div className='container'>
+      <Navbar />
+      <div className='container recipe-details-container'>
         {loading ? (
           <Fragment>
             <div className='recipe-banner-skeleton'>

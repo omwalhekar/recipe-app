@@ -1,6 +1,5 @@
 import React from 'react';
 import { capitalize } from 'lodash';
-import { Link } from 'react-router-dom';
 import RemoveIcon from './icons/RemoveIcon';
 
 export const RecipeCard = (props: {
@@ -14,7 +13,13 @@ export const RecipeCard = (props: {
   return (
     <div onClick={() => onClick && onClick(id)} className='recipe-card'>
       {removeFromFavorites && (
-        <div className='remove-btn' onClick={() => removeFromFavorites(id)}>
+        <div
+          className='remove-btn'
+          onClick={(e: any) => {
+            e.stopPropagation();
+            removeFromFavorites(id);
+          }}
+        >
           <RemoveIcon />
         </div>
       )}

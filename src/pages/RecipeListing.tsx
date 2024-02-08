@@ -7,6 +7,7 @@ import BackIcon from '../components/icons/BackIcon';
 import { isEmpty } from 'lodash';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
+import Navbar from '../components/Navbar';
 
 const RecipeListing = () => {
   const [recipes, setRecipes] = useState([]);
@@ -38,7 +39,8 @@ const RecipeListing = () => {
 
   return (
     <div className='recipe-listing'>
-      <div className='container'>
+      <Navbar />
+      <div className='container listing-container'>
         <div className='search-bar-wrapper'>
           <div className='back-icon' onClick={goToHome}>
             <BackIcon />
