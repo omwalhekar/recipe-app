@@ -39,7 +39,7 @@
       width: 100%;
     }
     .search-icon {
-      right: -20px;
+      right: -50px;
     }
   }
 
@@ -89,7 +89,7 @@
     color: #515151;
 
     &::placeholder {
-      color: #afafaf;
+      color: rgb(185, 185, 185);
       font-family: Epilogue;
     }
   }
@@ -115,6 +115,7 @@
   }
   .search-bar {
     width: 300px;
+    background-color: #f5f2f0 !important;
   }
   .recipe-card-listing {
     margin-top: 30px;
