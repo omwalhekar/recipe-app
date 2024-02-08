@@ -11,4 +11,8 @@ body {
   width: 75%;
   max-width: 1080px;
   margin: 0 auto;
+
+  @media (max-width: 414px) {
+    width: 90%;
+  }
 }
