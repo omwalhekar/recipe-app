@@ -15,14 +15,14 @@ class Recipe {
 
   async getRecipes(ingredients: string): Promise<any[]> {
     try {
-      // const response = await axios.get(
-      //   `${this.baseUrl}/recipes/findByIngredients?ignorePantry=true&number=8&ranking=1&ingredients=${ingredients}`,
-      //   this.headerOptions,
-      // );
-      // return response.data;
-      return new Promise((res, rej) => {
-        res(MULTIPLE as any);
-      });
+      const response = await axios.get(
+        `${this.baseUrl}/recipes/findByIngredients?ignorePantry=true&number=8&ranking=1&ingredients=${ingredients}`,
+        this.headerOptions,
+      );
+      return response.data;
+      // return new Promise((res, rej) => {
+      //   res(MULTIPLE as any);
+      // });
     } catch (error) {
       console.error('Error fetching recipes:', error);
       throw error;
@@ -31,14 +31,14 @@ class Recipe {
 
   async getRecipeById(id: string): Promise<any> {
     try {
-      // const response = await axios.get(
-      //   `${this.baseUrl}/recipes/${id}/information?includeNutrition=false`,
-      //   this.headerOptions,
-      // );
-      // return response.data;
-      return new Promise((res, rej) => {
-        res(SINGLE as any);
-      });
+      const response = await axios.get(
+        `${this.baseUrl}/recipes/${id}/information?includeNutrition=false`,
+        this.headerOptions,
+      );
+      return response.data;
+      // return new Promise((res, rej) => {
+      //   res(SINGLE as any);
+      // });
     } catch (error) {
       console.error(`Error fetching recipe with id ${id}:`, error);
       throw error;

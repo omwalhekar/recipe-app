@@ -1,16 +1,23 @@
 import React from 'react';
 import { capitalize } from 'lodash';
 import { Link } from 'react-router-dom';
+import RemoveIcon from './icons/RemoveIcon';
 
 export const RecipeCard = (props: {
   recipe: any;
-  onClick: (id: String) => void;
+  onClick?: (id: string) => void;
+  removeFromFavorites?: (id: string) => void;
 }) => {
-  const { recipe, onClick } = props;
-  const { id, title, image, likes, usedIngredients } = recipe;
+  const { recipe, onClick, removeFromFavorites } = props;
+  const { id, title, image } = recipe;
 
   return (
-    <div onClick={() => onClick(id)} className='recipe-card'>
+    <div onClick={() => onClick && onClick(id)} className='recipe-card'>
+      {removeFromFavorites && (
+        <div className='remove-btn' onClick={() => removeFromFavorites(id)}>
+          <RemoveIcon />
+        </div>
+      )}
       <div className='top-section'>
         <img src={image} alt={title} className='card-image' />
       </div>
