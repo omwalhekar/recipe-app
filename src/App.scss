@@ -55,3 +55,113 @@
     font-family: Poppins;
   }
 }
+
+// RESULTS PAGE
+.recipe-listing {
+  min-height: 100vh;
+  padding: 50px 0;
+  background-color: #fed9b7;
+}
+.recipe-cards {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  // grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: 30px;
+  grid-row-gap: 40px;
+}
+.recipe-card {
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  background-color: white;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease-in-out;
+  text-decoration: none !important;
+
+  &:hover {
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+  }
+
+  .top-section {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.84) 0%,
+        rgba(255, 255, 255, 0) 80%
+      );
+    }
+  }
+
+  .card-img-wrapper {
+    width: 100%;
+
+    img {
+      width: 100%;
+      // height: 100%;
+      object-fit: cover;
+    }
+  }
+  .recipe-title-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    z-index: 1;
+    bottom: 10px;
+    color: white;
+    font-weight: 500;
+    font-size: 18px;
+  }
+  .title-wrapper {
+    width: 300px;
+    overflow: hidden;
+  }
+  .recipe-title {
+    padding-left: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .recipe-rating {
+    padding-right: 10px;
+  }
+  .bottom-section {
+  }
+  .ingredient-listing {
+    padding: 10px;
+  }
+}
+
+// Ingredient item
+.ingredient-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+
+  color: #515151;
+
+  .ingredient-item {
+    &.quantity {
+      align-self: flex-start;
+    }
+  }
+  .separator {
+    margin: 0 10px;
+    flex-grow: 1;
+    border-bottom: 1px dashed #cecece;
+  }
+}
