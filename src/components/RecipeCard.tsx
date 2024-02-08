@@ -12,9 +12,7 @@ export const RecipeCard = (props: {
   return (
     <div onClick={() => onClick(id)} className='recipe-card'>
       <div className='top-section'>
-        <div className='card-img-wrapper'>
-          <img src={image} alt={title} className='card-image' />
-        </div>
+        <img src={image} alt={title} className='card-image' />
       </div>
       <div className='recipe-title'>{capitalize(title)}</div>
     </div>

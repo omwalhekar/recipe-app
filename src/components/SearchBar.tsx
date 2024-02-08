@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import RecipeService from '../services/recipe';
 import { useNavigate } from 'react-router-dom';
+import SearchIcon from './icons/SearchIcon';
 
 const SearchBar = (props: {
   initialValue?: string;
   setRecipes?: any;
   redirect?: boolean;
+  setLoading: (arg0: boolean) => void;
 }) => {
-  const { initialValue, setRecipes, redirect } = props;
+  const { initialValue, setRecipes, redirect, setLoading } = props;
   const [searchQuery, setSearchQuery] = useState('');
   const navigate = useNavigate();
 
@@ -20,35 +22,48 @@ const SearchBar = (props: {
     setSearchQuery(e.target.value);
   };
 
+  const handleKeyDown = (event: any) => {
+    if (event.key === 'Enter') {
+      handleSearch();
+    }
+  };
+
   const handleSearch = () => {
-    if (redirect) {
-      navigate(`/results/${parseSeachQuery()}`);
-    } else {
-      fetchRecipies();
-      window.history.replaceState({}, '', `/results/${parseSeachQuery()}`);
+    if (searchQuery) {
+      if (redirect) {
+        navigate(`/results/${parseSeachQuery()}`);
+      } else {
+        fetchRecipies();
+        window.history.replaceState({}, '', `/results/${parseSeachQuery()}`);
+      }
     }
   };
 
   const fetchRecipies = () => {
     if (searchQuery) {
       const queryString = parseSeachQuery();
-
-      RecipeService.getRecipes(queryString).then((data: any) => {
-        setRecipes(data);
-      });
+      setLoading(true);
+      RecipeService.getRecipes(queryString)
+        .then((data: any) => {
+          setRecipes(data);
+        })
+        .finally(() => setLoading(false));
     }
   };
 
   return (
-    <div>
+    <div className='search-bar-wrapper'>
       <input
         className='search-bar'
         type='text'
         defaultValue={initialValue}
         placeholder='E.g. Pasta Pizza'
         onChange={handleChange}
+        onKeyDown={handleKeyDown}
       />
-      <button onClick={handleSearch}>Search</button>
+      <div className='search-icon' onClick={handleSearch}>
+        <SearchIcon />
+      </div>
     </div>
   );
 };

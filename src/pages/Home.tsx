@@ -1,23 +1,46 @@
-import React, { useEffect, useState } from 'react';
-
-import RecipeService from '../services/recipe';
+import React, { useState } from 'react';
 import SearchBar from '../components/SearchBar';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
   // const [recipes, setRecipes] = useState([]);
+  const tags = ['Pasta', 'Spinach', 'Eggs', 'Tomatoes', 'Pizza'];
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+
+  const handleTagSelection = (tag: String) => {
+    navigate(`/results/${tag}`);
+  };
 
   return (
-    <div className='home-page'>
-      <img className='banner-img' src='assets/banner-image.jpg' alt='' />
-      <div className='banner-content'>
-        <div className='container'>
-          <div className='navbar'></div>
-          <div className='search-section'>
-            <header className='banner-title'>Eat what makes you happy!</header>
+    <div className='container home-page'>
+      <div className='center-section'>
+        <img className='banner-img' src='assets/banner-image.jpg' alt='' />
+        <div className='banner-content'>
+          <div className='container'>
+            <div className='navbar'></div>
+            <div className='search-section'>
+              <header className='banner-title'>
+                Eat what makes you happy!
+              </header>
 
-            <SearchBar redirect={true} />
+              <SearchBar redirect={true} setLoading={setLoading} />
+            </div>
           </div>
         </div>
+      </div>
+      <div className='default-tags'>
+        {tags.map((tag, index) => {
+          return (
+            <div
+              key={index}
+              className='food-tag'
+              onClick={() => handleTagSelection(tag)}
+            >
+              {tag}
+            </div>
+          );
+        })}
       </div>
     </div>
   );
