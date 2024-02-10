@@ -97,6 +97,11 @@
       }
     }
   }
+  @media (max-width: 390px) {
+    .center-section {
+      height: 400px;
+    }
+  }
 }
 
 .back-icon {
@@ -198,11 +203,18 @@
 
   @media (max-width: 414px) {
     padding-bottom: 40px;
+
+    .listing-container {
+      margin-top: 30px;
+    }
     .search-bar-wrapper {
       position: unset;
 
       .back-icon {
         position: unset;
+      }
+      .search-icon {
+        display: none;
       }
     }
     .search-bar {
@@ -276,6 +288,9 @@
       .recipe-img-wrapper {
         min-width: 100%;
         width: 100%;
+      }
+      .recipe-title {
+        width: 90%;
       }
     }
   }
