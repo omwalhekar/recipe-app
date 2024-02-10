@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import FilledHeartIcon from './icons/FilledHeartIcon';
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -18,7 +19,8 @@ const Navbar = () => {
           Chef's Assistant
         </div>
         <div className='right-section' onClick={goToFavorites}>
-          Your Favorites
+          <FilledHeartIcon />
+          <span>Favorites</span>
         </div>
       </div>
     </div>
