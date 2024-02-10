@@ -1,0 +1,69 @@
+// FAVORITE PAGE
+.favorites-page {
+  margin-top: 50px;
+  .page-header {
+    margin-top: 20px;
+    font-size: 32px;
+    font-weight: 700;
+  }
+  .favorite-cards-list {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+  }
+  .recipe-card {
+    position: relative;
+    margin-right: 20px;
+    cursor: pointer;
+
+    .remove-btn {
+      position: absolute;
+      right: -15px;
+      top: -25px;
+      cursor: pointer;
+    }
+  }
+  .top-section {
+    width: 200px;
+    height: 176px;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 10px;
+
+    img {
+      object-fit: cover;
+    }
+  }
+  .recipe-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #171412;
+  }
+  .empty-list-text {
+    margin-top: 20px;
+  }
+  .back-btn {
+    cursor: pointer;
+  }
+
+  @media (max-width: 414px) {
+    .favorite-cards-list {
+      grid-template-columns: repeat(1, 1fr);
+
+      .recipe-card {
+        width: 100%;
+        margin-bottom: 30px;
+        overflow: hidden;
+
+        .remove-btn {
+          right: 10px;
+          top: 10px;
+        }
+      }
+      .top-section {
+        width: 100%;
+        height: 200px;
+      }
+    }
+  }
+}

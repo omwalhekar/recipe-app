@@ -6,8 +6,8 @@ import RecipeService from '../services/recipe';
 import BackIcon from '../components/icons/BackIcon';
 import { isEmpty } from 'lodash';
 import Skeleton from 'react-loading-skeleton';
-import 'react-loading-skeleton/dist/skeleton.css';
 import Navbar from '../components/Navbar';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 const RecipeListing = () => {
   const [recipes, setRecipes] = useState([]);

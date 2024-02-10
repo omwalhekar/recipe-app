@@ -1,0 +1,149 @@
+// HOME PAGE
+.home-page {
+  .center-section {
+    position: relative;
+    margin-top: 60px;
+    height: 400px;
+    border-radius: 20px;
+    overflow: hidden;
+
+    .banner-img,
+    .banner-content {
+      width: 100%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .banner-img {
+      height: 100%;
+      object-fit: cover;
+    }
+    .banner-title {
+      width: 60%;
+      font-size: 55px;
+      font-weight: 700;
+      line-height: 1.2;
+      color: white;
+    }
+  }
+
+  .search-bar-wrapper {
+    width: 300px;
+
+    .search-bar {
+      width: 100%;
+    }
+    .search-icon {
+      right: -50px;
+    }
+  }
+
+  .default-tags {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 35px;
+
+    .food-tag {
+      padding: 15px 20px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #171412;
+      border-radius: 10px;
+      background: #f5f2f0;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+
+      &:hover {
+        background: #e3e0e0;
+      }
+
+      @media (max-width: 414px) {
+        &:nth-last-child(1),
+        &:nth-last-child(2) {
+          display: none;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 414px) {
+    .center-section {
+      margin-top: 30px;
+      height: 350px;
+
+      .container {
+        margin: 0 30px;
+      }
+      .banner-title {
+        width: 60%;
+        font-size: 35px;
+        font-weight: 700;
+        line-height: 1.2;
+        color: white;
+      }
+    }
+
+    .search-bar-wrapper {
+      width: 200px;
+
+      .search-bar {
+        width: 100%;
+      }
+      .search-icon {
+        right: -50px;
+      }
+    }
+  }
+  @media (max-width: 390px) {
+    .center-section {
+      height: 400px;
+    }
+    .search-bar-wrapper {
+      margin-top: 20px;
+    }
+  }
+}
+
+.back-icon {
+  cursor: pointer;
+}
+.search-section {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  @media (max-width: 414px) {
+    gap: 20px;
+  }
+}
+.search-bar-wrapper {
+  position: relative;
+
+  .search-bar {
+    max-width: 100%;
+    border: 1px solid #e0e0e0;
+    border-radius: 30px;
+    outline: none;
+    padding: 12px 20px;
+    padding-right: 50px;
+    font-size: 18px;
+    font-family: Epilogue;
+    color: #515151;
+
+    &::placeholder {
+      color: rgb(185, 185, 185);
+      font-family: Epilogue;
+    }
+  }
+
+  .search-icon {
+    position: absolute;
+    right: 10px;
+    top: 55%;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+}
