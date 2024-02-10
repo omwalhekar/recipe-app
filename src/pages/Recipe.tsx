@@ -53,21 +53,21 @@ const Recipe = () => {
 
     if (isLiked) {
       setIsLiked(false);
-      newLikedRecipes = likedRecipes.filter((recipe: any) => recipe.id !== id);
+      newLikedRecipes = likedRecipes?.filter((recipe: any) => recipe.id !== id);
     } else {
       setIsLiked(true);
-      newLikedRecipes = [...likedRecipes, { id, title, image }];
+      newLikedRecipes = [...(likedRecipes || []), { id, title, image }];
     }
 
     setLikedRecipes(newLikedRecipes);
-    localStorage.setItem('likedRecipes', JSON.stringify(newLikedRecipes));
+    sessionStorage.setItem('likedRecipes', JSON.stringify(newLikedRecipes));
   };
 
   useEffect(() => {
     if (recipeId && recipeId !== recipeData?.id) {
       setLoading(true);
       const likedRecipes: any = JSON.parse(
-        localStorage.getItem('likedRecipes') as any,
+        sessionStorage.getItem('likedRecipes') as any,
       );
       setLikedRecipes(likedRecipes);
 

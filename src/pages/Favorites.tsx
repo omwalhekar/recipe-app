@@ -11,7 +11,7 @@ const Favorites = () => {
   const removeFromLiked = (id: string) => {
     const newLiked = recipes.filter((recipe: any) => recipe.id !== id);
     setRecipes(newLiked);
-    localStorage.setItem('likedRecipes', JSON.stringify(newLiked));
+    sessionStorage.setItem('likedRecipes', JSON.stringify(newLiked));
   };
 
   const goToHome = () => {
@@ -24,7 +24,7 @@ const Favorites = () => {
 
   useEffect(() => {
     const likedRecipes: any = JSON.parse(
-      localStorage.getItem('likedRecipes') as any,
+      sessionStorage.getItem('likedRecipes') as any,
     );
     setRecipes(likedRecipes);
   }, []);
