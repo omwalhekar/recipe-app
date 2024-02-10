@@ -13,6 +13,7 @@ body {
   margin: 0 auto;
 
   @media (max-width: 414px) {
-    width: 90%;
+    width: auto;
+    margin: 0 20px;
   }
 }

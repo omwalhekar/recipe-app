@@ -72,7 +72,7 @@
   @media (max-width: 414px) {
     .center-section {
       margin-top: 30px;
-      height: 250px;
+      height: 350px;
 
       .container {
         margin: 0 30px;
@@ -100,6 +100,9 @@
   @media (max-width: 390px) {
     .center-section {
       height: 400px;
+    }
+    .search-bar-wrapper {
+      margin-top: 20px;
     }
   }
 }
@@ -306,6 +309,15 @@
     .right-section {
       width: 400px;
     }
+
+    @media (max-width: 414px) {
+      flex-direction: column;
+
+      .left-section,
+      .right-section {
+        width: 100%;
+      }
+    }
   }
   .title-skeleton {
     height: 60px;
@@ -320,6 +332,12 @@
     .meta-item {
       height: 30px;
       width: 120px;
+    }
+
+    @media (max-width: 414px) {
+      .meta-item {
+        width: 100px;
+      }
     }
   }
 
@@ -537,6 +555,9 @@
     cursor: pointer;
   }
   .right-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
