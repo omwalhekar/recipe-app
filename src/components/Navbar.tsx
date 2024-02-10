@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import FilledHeartIcon from './icons/FilledHeartIcon';
+import Logo from './icons/Logo';
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -16,10 +17,15 @@ const Navbar = () => {
     <div className='navbar'>
       <div className='container navbar-content'>
         <div className='left-section' onClick={goToHome}>
-          Chef's Assistant
+          <div className='logo'>
+            <Logo />
+          </div>
+          <span> Chef's Assistant</span>
         </div>
         <div className='right-section' onClick={goToFavorites}>
-          <FilledHeartIcon />
+          <div className='favorite-icon'>
+            <FilledHeartIcon />
+          </div>
           <span>Favorites</span>
         </div>
       </div>
